@@ -4,7 +4,7 @@
 
 extern "C"
 {
-    int F(const double** arg, double** res, long long int* iw, double* w, int mem);
+    int ddyn(const double** arg, double** res, long long int* iw, double* w, int mem);
 }
 
 class PID;
@@ -26,7 +26,7 @@ public:
     bool has_ground = true;
 
     Quadrotor();
-    
+    void set_position(double pos[3]);
     int start();
     void send_ctrl(double c[4]);
     void set_states_cb(void (*states_callback)(double states[13]));

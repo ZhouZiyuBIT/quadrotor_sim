@@ -1,0 +1,11 @@
+<launch>
+    <param name="robot_description" textfile="$(find quadrotor_sim)/urdf/quadrotor.urdf" />
+
+    <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
+
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> -->
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find quadrotor_sim)/config/rviz.rviz" required="true" />
+    
+    <!-- <node name="quadrotor_sim_node" type="quadrotor_sim_node" pkg="quadrotor_sim" /> -->
+</launch> 

@@ -70,6 +70,13 @@ Quadrotor::Quadrotor()
     wz_pid->setParameters(20, 0.3, 0, 3, 5);
 }
 
+void Quadrotor::set_position(double pos[3])
+{
+    X[0] = pos[0];
+    X[1] = pos[1];
+    X[2] = pos[2];
+}
+
 int Quadrotor::start()
 {
     std::thread t(Quadrotor::simulation, this);
@@ -129,19 +136,16 @@ void Quadrotor::step_1ms()
         const double* arg[2] = {X, U};
         double* res[1] = {X1};
 
-        F(arg, res, nullptr, nullptr, 0);
+        ddyn(arg, res, nullptr, nullptr, 0);
         
-        //quaternion normalization
-        double q_norm = sqrt( X1[6]*X1[6]+X1[7]*X1[7]+X1[8]*X1[8]+X1[9]*X1[9] );
-        X1[6] = X1[6]/q_norm;
-        X1[7] = X1[7]/q_norm;
-        X1[8] = X1[8]/q_norm;
-        X1[9] = X1[9]/q_norm;
-
-        if(has_ground)
-        {
-            if(X1[2]>0) X1[2]=0;
-        }
+        // if(has_ground)
+        // {
+        //     if(X1[2]>0) 
+        //     {
+        //         X1[2]=0;
+        //         X1[5] = -X1[5];
+        //     }
+        // }
 
         for(int i=0; i<13; i++)
         {
