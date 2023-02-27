@@ -14,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   tf
-  yaml-cpp
+  # yaml-cpp
 )
 
 ## System dependencies are found with CMake's conventions

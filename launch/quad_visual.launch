@@ -1,5 +1,5 @@
 <launch>
-    <param name="robot_description" textfile="$(find quadrotor_sim)/urdf/quadrotor.urdf" />
+    <param name="robot_description" textfile="$(find quadrotor_sim)/urdf/px4-vision_asm.urdf" />
 
     <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
 
